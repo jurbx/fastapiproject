@@ -1,1 +1,1 @@
-web: gunicorn fastApiProject.wsgi --log-file -
+web: gunicorn -w 4 -k uvicorn.workers.UvicornWorker main.py:app
