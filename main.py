@@ -1,14 +1,12 @@
 import uvicorn
 from fastapi import FastAPI
 from db.base import database
-from endpoints import users, auth, jobs, milks
-
+from endpoints import users, auth, jobs
 
 app = FastAPI(title='FastApiProject')
 app.include_router(users.router, prefix='/users', tags=['users'])
 app.include_router(auth.router, prefix='/auth', tags=['auth'])
 app.include_router(jobs.router, prefix='/job', tags=['job'])
-app.include_router(milks.router, prefix='/milk', tags=['milk'])
 
 
 @app.get("/hello/{name}")

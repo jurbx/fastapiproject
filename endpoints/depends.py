@@ -2,7 +2,6 @@ from starlette import status
 
 from models.user import User
 from repositories.jobs import JobsRepository
-from repositories.milks import MilksRepository
 from repositories.users import UserRepository
 from db.base import database
 from fastapi import Depends, HTTPException
@@ -15,10 +14,6 @@ def get_user_repository():
 
 def get_job_repository():
     return JobsRepository(database)
-
-
-def get_milks_repository():
-    return MilksRepository(database)
 
 
 async def get_current_user(
