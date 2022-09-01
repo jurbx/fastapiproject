@@ -5,10 +5,11 @@ from starlette.config import Config
 config = Config('.env_dev')
 
 
-# DATABASE_URL = os.environ.get('DB_URL')
-DATABASE_URL = config('EE_DATABASE_URL', cast=str, default='')
+DATABASE_URL = os.environ.get('DB_URL')
+# DATABASE_URL = config('EE_DATABASE_URL', cast=str, default='')
 
-SECRET_KEY = config('EE_DATABASE_URL', cast=str, default='bc52a97330b499365abaf1716ffc70c7')
+SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY = 'bc52a97330b499365abaf1716ffc70c7
 
 ALGORITM = 'HS256'
 
