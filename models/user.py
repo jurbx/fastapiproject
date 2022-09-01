@@ -15,7 +15,20 @@ class User(BaseModel):
 
 
 class UserIn(BaseModel):
-    name: str = None
+    email: EmailStr
+    password: str
+    password2: str
+    is_company: bool = False
+
+    @validator('password2')
+    def password_match(cls, v, values, **kwargs):
+        if 'password' in values and v != values['password']:
+            raise ValueError('Passwords don`t match')
+        return v
+
+
+class UserUpdate(BaseModel):
+    name: str = ''
     email: EmailStr
     password: str
     password2: str

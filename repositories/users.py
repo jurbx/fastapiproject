@@ -3,8 +3,7 @@ import datetime
 from core.security import hash_password
 from .base import BaseRepository
 from db.users import users
-from typing import List
-from models.user import User, UserIn
+from models.user import User, UserIn, UserUpdate
 
 
 class UserRepository(BaseRepository):
@@ -23,7 +22,7 @@ class UserRepository(BaseRepository):
     async def create(self, u: UserIn):
         user = User(
             id=0,
-            name=u.name,
+            name='',
             email=u.email,
             hashed_password=hash_password(u.password),
             is_company=u.is_company,
@@ -38,7 +37,7 @@ class UserRepository(BaseRepository):
         user.id = await self.database.execute(query)
         return user
 
-    async def update(self, id: int, u: UserIn):
+    async def update(self, id: int, u: UserUpdate):
         user = User(
             id=id,
             name=u.name,
