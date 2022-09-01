@@ -25,16 +25,14 @@ async def shutdown():
     await database.disconnect()
 
 
-origins = [
-    'http://localhost:3000'
-]
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=['GET', 'PUT', 'POST', 'DELETE'],
-    allow_headers=['Content-Type', 'application/json']
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 if __name__ == '__main__':
