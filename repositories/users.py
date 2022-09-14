@@ -19,6 +19,10 @@ class UserRepository(BaseRepository):
             return None
         return User.parse_obj(user)
 
+    async def delete(self, id: int):
+        query = users.delete().where(users.c.id == id)
+        return await self.database.fetch_one(query=query)
+
     async def create(self, u: UserIn):
         user = User(
             id=0,

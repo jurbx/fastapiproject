@@ -4,13 +4,13 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from db.base import database
-from endpoints import users, auth, jobs
+from endpoints import users, auth, products
 from starlette.middleware.cors import CORSMiddleware
 
 app = FastAPI(title='FastApiProject')
 app.include_router(users.router, prefix='/api/users', tags=['users'])
 app.include_router(auth.router, prefix='/api/auth', tags=['auth'])
-app.include_router(jobs.router, prefix='/api/job', tags=['job'])
+app.include_router(products.router, prefix='/api/products', tags=['products'])
 
 app.mount("/static", StaticFiles(directory="react/static"), name="static")
 

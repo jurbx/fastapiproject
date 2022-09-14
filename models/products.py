@@ -4,20 +4,20 @@ from pydantic import BaseModel, EmailStr
 from typing import Optional
 
 
-class BaseJob(BaseModel):
+class BaseProduct(BaseModel):
     title: str
     description: str
-    salary_from: int
-    salary_to: int
+    price: int
     is_active: bool
+    img: str
 
 
-class Job(BaseJob):
+class Product(BaseProduct):
     id: int
     user_id: int
     created_at: datetime.datetime
     updated_at: datetime.datetime
 
 
-class JobIn(BaseJob):
+class ProductIn(BaseProduct):
     pass

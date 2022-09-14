@@ -1,7 +1,7 @@
 from starlette import status
 
 from models.user import User
-from repositories.jobs import JobsRepository
+from repositories.products import ProductsRepository
 from repositories.users import UserRepository
 from db.base import database
 from fastapi import Depends, HTTPException
@@ -13,7 +13,7 @@ def get_user_repository():
 
 
 def get_job_repository():
-    return JobsRepository(database)
+    return ProductsRepository(database)
 
 
 async def get_current_user(
