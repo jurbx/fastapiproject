@@ -23,7 +23,6 @@ async def read_user_products(
         user_id: int,
         products: ProductsRepository = Depends(get_job_repository)):
     return await products.get_by_user(user_id)
-# current_user: User = Depends(get_current_user)
 
 
 @router.get('/{id}', response_model=Product)

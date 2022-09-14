@@ -17,10 +17,6 @@ app.mount("/static", StaticFiles(directory="react/static"), name="static")
 templates = Jinja2Templates(directory="react")
 
 
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
-
 
 @app.get('/{full_path:path}')
 async def index(request: Request):
