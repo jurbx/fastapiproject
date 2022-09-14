@@ -2,7 +2,7 @@ from typing import List
 
 from fastapi import APIRouter, Depends, HTTPException, status
 
-from models.products import Product, BaseProduct
+from models.products import Product, BaseProduct, ProductIn
 from models.user import User
 from .depends import get_job_repository, get_current_user
 from repositories.products import ProductsRepository
@@ -28,7 +28,7 @@ async def read_product(
 
 @router.post('/', response_model=BaseProduct)
 async def create(
-        product: Product,
+        product: ProductIn,
         products: ProductsRepository = Depends(get_job_repository),
         current_user: User = Depends(get_current_user)):
     return await products.create(user_id=current_user.id, p=product)
