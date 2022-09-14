@@ -1,4 +1,4 @@
-from .jobs import jobs
+from .products import products
 from .users import users
 from .base import metadata, engine
 
