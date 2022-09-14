@@ -18,6 +18,5 @@ class Product(BaseProduct):
     created_at: datetime.datetime
     updated_at: datetime.datetime
 
-
 class ProductIn(BaseProduct):
     pass

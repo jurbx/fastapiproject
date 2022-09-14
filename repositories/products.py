@@ -8,7 +8,11 @@ from models.products import BaseProduct, Product, ProductIn
 class ProductsRepository(BaseRepository):
 
     async def get_all(self, limit: int = 100, skip: int = 0):
-        query = products.select().limit(limit).offset(skip)
+        query = products.select()
+        return await self.database.fetch_all(query=query)
+
+    async def get_by_user(self, user_id: int):
+        query = products.select().filter(products.c.user_id == user_id)
         return await self.database.fetch_all(query=query)
 
     async def get_by_id(self, id: int):
@@ -16,7 +20,7 @@ class ProductsRepository(BaseRepository):
         product = await self.database.fetch_one(query=query)
         if product is None:
             return None
-        return BaseProduct.parse_obj(product)
+        return Product.parse_obj(product)
 
     async def delete(self, id:int):
         query = products.delete().where(products.c.id == id)
@@ -50,6 +54,7 @@ class ProductsRepository(BaseRepository):
             description=p.description,
             price=p.price,
             img=p.img,
+            is_active=p.is_active,
             created_at=datetime.datetime.utcnow(),
             updated_at=datetime.datetime.utcnow(),
         )
