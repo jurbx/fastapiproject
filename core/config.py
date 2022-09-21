@@ -6,7 +6,7 @@ config = Config('.env_dev')
 
 url = os.environ.get('DATABASE_URL')
 url = url.split('//')[1]
-DATABASE_URL = f'postresql://{url}'
+DATABASE_URL = f'postgresql://{url}'
 # DATABASE_URL = config('EE_DATABASE_URL', cast=str, default='')
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
