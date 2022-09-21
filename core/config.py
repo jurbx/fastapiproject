@@ -5,7 +5,7 @@ from starlette.config import Config
 config = Config('.env_dev')
 
 
-DATABASE_URL = os.environ.get('DB_URL')
+DATABASE_URL = os.environ.get('DATABASE_URL').replace('potsgres', 'potsgresql')
 # DATABASE_URL = config('EE_DATABASE_URL', cast=str, default='')
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
